@@ -23,8 +23,6 @@ const App: React.FC = () => {
     const { distance, unit, adjustment, horizontalOffset, verticalOffset } = input;
     let clickValueAtDistance = 0;
 
-    // Converter para CM para o cálculo interno se estiver em modo quadrados
-    // Assumindo que o usuário clicou baseando-se no grid de 1.5cm
     const hOffsetCm = horizontalOffset;
     const vOffsetCm = verticalOffset;
 
@@ -71,10 +69,15 @@ const App: React.FC = () => {
 
   const fetchTips = async () => {
     setLoadingTips(true);
-    const avgOffset = (Math.abs(input.horizontalOffset) + Math.abs(input.verticalOffset)) / 2;
-    const tips = await getShootingTips(avgOffset, input.distance);
-    setAiTips(tips);
-    setLoadingTips(false);
+    try {
+      const avgOffset = (Math.abs(input.horizontalOffset) + Math.abs(input.verticalOffset)) / 2;
+      const tips = await getShootingTips(avgOffset, input.distance);
+      setAiTips(tips);
+    } catch (e) {
+      setAiTips("Não foi possível carregar as dicas agora.");
+    } finally {
+      setLoadingTips(false);
+    }
   };
 
   const handleTargetPoint = (h: number, v: number) => {
@@ -103,7 +106,6 @@ const App: React.FC = () => {
       
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 pt-8">
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
-           {/* Área Central: Alvo Gigante Responsivo */}
           <div className="xl:col-span-6 flex flex-col items-center">
              <div className="w-full">
                 <TargetView 
@@ -146,7 +148,6 @@ const App: React.FC = () => {
              </div>
           </div>
 
-          {/* Configurações da Esquerda */}
           <div className="xl:col-span-3 space-y-6">
             <section className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
               <h2 className="text-xs font-black text-slate-400 mb-6 uppercase tracking-widest flex items-center">
@@ -218,7 +219,6 @@ const App: React.FC = () => {
             </section>
           </div>
 
-          {/* Resultados à Direita */}
           <div className="xl:col-span-3 space-y-6">
             <section className="bg-slate-900 text-white p-8 rounded-[2rem] shadow-2xl border-b-8 border-orange-500">
               <h2 className="text-[10px] font-black mb-10 uppercase tracking-[0.3em] text-orange-400 flex items-center justify-center">

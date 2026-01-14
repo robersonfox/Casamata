@@ -72,7 +72,8 @@ const App: React.FC = () => {
     try {
       const avgOffset = (Math.abs(input.horizontalOffset) + Math.abs(input.verticalOffset)) / 2;
       const tips = await getShootingTips(avgOffset, input.distance);
-      setAiTips(tips);
+      // Garantimos que tips seja string antes de setar o estado
+      setAiTips(tips || "Foque na consistência da sua visada.");
     } catch (e) {
       setAiTips("Não foi possível carregar as dicas agora.");
     } finally {
@@ -205,7 +206,7 @@ const App: React.FC = () => {
                     <i className="fa-solid fa-bolt mr-2"></i> Assistente IA
                 </h3>
                 {aiTips ? (
-                    <div className="text-xs text-orange-900 leading-relaxed font-medium">{aiTips}</div>
+                    <div className="text-xs text-orange-900 leading-relaxed font-medium whitespace-pre-wrap">{aiTips}</div>
                 ) : (
                     <p className="text-[11px] text-orange-700/70 italic leading-relaxed">Clique abaixo para analisar seu agrupamento e receber dicas de postura e gatilho.</p>
                 )}

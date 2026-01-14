@@ -4,6 +4,7 @@
   "short_name": "Casamata",
   "description": "Calculadora de regulagem de miras e lunetas para atiradores.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#f97316",

@@ -10,8 +10,8 @@
   "theme_color": "#f97316",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/1150/1150612.png",
-      "sizes": "512x512",
+      "src": "./assets/lobo-128px.png",
+      "sizes": "128x128",
       "type": "image/png",
       "purpose": "any maskable"
     }

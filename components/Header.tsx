@@ -6,8 +6,12 @@ const Header: React.FC = () => {
     <header className="bg-slate-900 text-white py-6 px-4 shadow-lg border-b-4 border-orange-500">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="bg-orange-500 p-2 rounded-full">
-            <i className="fa-solid fa-crosshairs text-2xl"></i>
+          <div className="bg-white p-1 rounded-full overflow-hidden w-12 h-12 flex items-center justify-center border-2 border-orange-500 shadow-inner">
+            <img 
+              src="./assets/lobo-128px.png" 
+              alt="Lobo Casamata" 
+              className="w-full h-full object-cover scale-110"
+            />
           </div>
           <div>
             <h1 className="text-2xl font-bold tracking-tight">Casamata - Regulagem de Mira</h1>

@@ -72,7 +72,6 @@ const App: React.FC = () => {
     try {
       const avgOffset = (Math.abs(input.horizontalOffset) + Math.abs(input.verticalOffset)) / 2;
       const tips = await getShootingTips(avgOffset, input.distance);
-      // Garantimos que tips seja string antes de setar o estado
       setAiTips(tips || "Foque na consistência da sua visada.");
     } catch (e) {
       setAiTips("Não foi possível carregar as dicas agora.");
